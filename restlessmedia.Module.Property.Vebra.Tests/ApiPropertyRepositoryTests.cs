@@ -1,8 +1,11 @@
-﻿using System;
+﻿using FakeItEasy;
+using restlessmedia.Module.Data;
+using restlessmedia.Module.Property.Vebra.Data;
+using System;
+using Xunit;
 
-namespace restlessmedia.UnitTest.Data.Repository
+namespace restlessmedia.Module.Property.Vebra.Tests
 {
-  [TestClass]
   public class ApiPropertyRepositoryTests
   {
     public ApiPropertyRepositoryTests()
@@ -16,8 +19,7 @@ namespace restlessmedia.UnitTest.Data.Repository
       _repository = new ApiPropertyRepository(_context);
     }
 
-    [TestMethod]
-    [Ignore]
+    [Fact(Skip = "ignored")]
     public void property_with_includes()
     {
       _repository.FindWithFiles(101617004313);

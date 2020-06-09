@@ -1,9 +1,10 @@
 ﻿using System.IO;
 using System.Reflection;
+using System.Xml.Serialization;
+using Xunit;
 
-namespace restlessmedia.UnitTest.Abstractions.Provider.ApiProperty
+namespace restlessmedia.Module.Property.Vebra.Tests
 {
-  [TestClass]
   public class ApiPropertyTests
   {
     public ApiPropertyTests()
@@ -11,13 +12,13 @@ namespace restlessmedia.UnitTest.Abstractions.Provider.ApiProperty
 
     }
 
-    [TestMethod]
+    [Fact]
     public void test_load_xml()
     {
       ApiProperties properties = _serializer.Deserialize(GetResourceStream()) as ApiProperties;
     }
 
-    [TestMethod]
+    [Fact]
     public void TotalFileCount_returns_total_of_all_resources()
     {
       ApiProperties properties = _serializer.Deserialize(GetResourceStream()) as ApiProperties;
@@ -25,10 +26,10 @@ namespace restlessmedia.UnitTest.Abstractions.Provider.ApiProperty
       int s = properties.TotalImageCount;
     }
 
-    [TestMethod]
+    [Fact]
     public void sadasd()
     {
-      string xml = "<test><images><image src=\"foo\"/><image src=\"foo\"/></image></test>";
+      string xml = "<test><images><image src=\"foo\"/><image src=\"foo\"/></images></test>";
       StringReader reader = new StringReader(xml);
       
       var t = new XmlSerializer(typeof(test)).Deserialize(reader) as test;
@@ -51,7 +52,7 @@ namespace restlessmedia.UnitTest.Abstractions.Provider.ApiProperty
 
     private static Stream GetResourceStream()
     {
-      const string resource = "restlessmedia.UnitTest.Abstractions.Provider.ApiProperty.example_feed.xml";
+      const string resource = "restlessmedia.Module.Property.Vebra.Tests.example_feed.xml";
       return Assembly.GetExecutingAssembly().GetManifestResourceStream(resource);
     }
 

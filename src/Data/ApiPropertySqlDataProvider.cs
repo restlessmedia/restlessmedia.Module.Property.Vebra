@@ -8,12 +8,11 @@ using restlessmedia.Module.Property.Data.DataModel;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Diagnostics;
 using System.Linq;
 
 namespace restlessmedia.Module.Property.Vebra.Data
 {
-  public class ApiPropertySqlDataProvider : SqlDataProviderBase
+  internal class ApiPropertySqlDataProvider : SqlDataProviderBase
   {
     public ApiPropertySqlDataProvider(IDataContext context, IPropertyDataProvider propertyDataProvider, IFileDataProvider fileDataProvider, ILog log)
       : base(context)

@@ -4,9 +4,9 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace restlessmedia.Module.Property.Vebra.Data
 {
-  public class DatabaseContext : Property.Data.DatabaseContext
+  internal class DatabaseContext : Property.Data.DatabaseContext
   {
-    public DatabaseContext(IDataContext dataContext, bool autoDetectChanges)
+    public DatabaseContext(IDataContext dataContext, bool autoDetectChanges = false)
       : base(dataContext, autoDetectChanges)
     {
       _dataContext = dataContext;

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<properties>
+  <property>
+    <propertyID>101617009351</propertyID>
+    <branchID>3</branchID>
+    <clientName>BlakeStanley (Hillmast Properties Ltd TA)</clientName>
+    <branchName>Hackney</branchName>
+    <department>Lettings</department>
+    <referenceNumber>2143</referenceNumber>
+    <addressName>14 Lion Mills</addressName>
+    <addressNumber>396</addressNumber>
+    <addressStreet>Hackney Road</addressStreet>
+    <address2/>
+    <address3>Hackney</address3>
+    <address4>London</address4>
+    <addressPostcode>E2 7ST</addressPostcode>
+    <country>United Kingdom</country>
+    <displayAddress>Lion Mills, 396 Hackney Road, London</displayAddress>
+    <propertyBedrooms>1</propertyBedrooms>
+    <propertyBathrooms>1</propertyBathrooms>
+    <propertyEnsuites>0</propertyEnsuites>
+    <propertyReceptionRooms>1</propertyReceptionRooms>
+    <propertyKitchens>1</propertyKitchens>
+    <displayPropertyType/>
+    <propertyType>2</propertyType>
+    <propertyStyle>16</propertyStyle>
+    <propertyAge>0</propertyAge>
+    <floorArea>0.00</floorArea>
+    <floorAreaUnits>sq ft</floorAreaUnits>
+    <propertyFeature1>Patio Garden</propertyFeature1>
+    <propertyFeature2>Communal Garden</propertyFeature2>
+    <propertyFeature3/>
+    <propertyFeature4/>
+    <propertyFeature5/>
+    <propertyFeature6/>
+    <propertyFeature7/>
+    <propertyFeature8/>
+    <propertyFeature9/>
+    <propertyFeature10/>
+    <rent>345</rent>
+    <rentFrequency>2</rentFrequency>
+    <toLetPOA>0</toLetPOA>
+    <studentProperty/>
+    <availability>4</availability>
+    <mainSummary>A charming ground floor one double bedroom apartment located on Hackney Road a short walk from Columbia Road, Brick Lane, Shoreditch and Broadway Market.  The property offers an open-plan reception with fitted kitchen and original wood floors, bathroom with shower over bath, double bedroom and small private patio area. The property benefits from having a beautiful communal garden. Available: 15th October 2016 / Offered: Furnished / Tenancy Agreement fee: &amp;pound;120 per tenancy / Reference fee: &amp;pound;60 each per person</mainSummary>
+    <fullDescription>
+      <![CDATA[ ]]>
+    </fullDescription>
+    <dateLastModified>2016-09-20</dateLastModified>
+    <featuredProperty>0</featuredProperty>
+    <regionID>11</regionID>
+    <latitude>51.5307</latitude>
+    <longitude>-0.0637413</longitude>
+    <flags>
+      <flag>New Instruction</flag>
+    </flags>
+    <images>
+      <image modified="2016-09-09 12:28:35">
+        http://media2.jupix.co.uk/v3/clients/1617/properties/9351/IMG_9351_1_large.jpg
+      </image>
+      <image modified="2016-09-09 12:28:35">
+        http://media2.jupix.co.uk/v3/clients/1617/properties/9351/IMG_9351_2_large.jpg
+      </image>
+      <image modified="2016-09-09 12:28:35">
+        http://media2.jupix.co.uk/v3/clients/1617/properties/9351/IMG_9351_3_large.jpg
+      </image>
+      <image modified="2016-09-09 12:28:35">
+        http://media2.jupix.co.uk/v3/clients/1617/properties/9351/IMG_9351_6_large.jpg
+      </image>
+      <image modified="2016-09-09 12:28:35">
+        http://media2.jupix.co.uk/v3/clients/1617/properties/9351/IMG_9351_7_large.jpg
+      </image>
+      <image modified="2016-09-09 12:28:35">
+        http://media2.jupix.co.uk/v3/clients/1617/properties/9351/IMG_9351_4_large.jpg
+      </image>
+      <image modified="2016-09-09 12:28:35">
+        http://media2.jupix.co.uk/v3/clients/1617/properties/9351/IMG_9351_5_large.jpg
+      </image>
+    </images>
+    <floorplans></floorplans>
+    <epcGraphs></epcGraphs>
+    <epcFrontPages>
+      <epcFrontPage modified="2016-09-09 12:16:01">http://epc.jupix.co.uk/373ort9i</epcFrontPage>
+    </epcFrontPages>
+    <brochures></brochures>
+    <virtualTours></virtualTours>
+    <externalLinks></externalLinks>
+  </property>
+</properties>

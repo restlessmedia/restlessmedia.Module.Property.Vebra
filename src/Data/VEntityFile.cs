@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace restlessmedia.Module.Property.Vebra.Data
 {
   [Table("VEntityFile")]
-  public class VEntityFile
+  internal class VEntityFile
   {
     public VEntityFile() { }
 

@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace restlessmedia.Module.Property.Vebra.Data
 {
   [Table("TApiPropertyState")]
-  public class TApiPropertyState
+  internal class TApiPropertyState
   {
     public DateTime? LastAccessed { get; set; }
 

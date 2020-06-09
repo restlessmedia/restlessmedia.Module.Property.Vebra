@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace restlessmedia.Module.Property.Vebra.Data
 {
   [Table("VApiProperty")]
-  public class VApiProperty
+  internal class VApiProperty
   {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.None)]
