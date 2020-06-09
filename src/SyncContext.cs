@@ -5,7 +5,7 @@ using System;
 
 namespace restlessmedia.Module.Property.Vebra
 {
-  public class SyncContext
+  internal class SyncContext
   {
     public SyncContext(ISync sync, IDiskStorageProvider storageProvider, IApiPropertyProvider provider, IApiPropertyDataProvider dataProvider, IFileService fileService, IUserInfo user = null)
     {

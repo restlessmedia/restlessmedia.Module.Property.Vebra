@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace restlessmedia.Module.Property.Vebra.Data
 {
-  public class ApiPropertyRepository : Repository<VApiProperty>
+  internal class ApiPropertyRepository : Repository<VApiProperty>
   {
     public ApiPropertyRepository(DatabaseContext context)
       : base(context)
