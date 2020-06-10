@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using restlessmedia.Module.Property.Vebra.Configuration;
 using restlessmedia.Module.Property.Vebra.Data;
 
 namespace restlessmedia.Module.Property.Vebra
@@ -10,6 +11,7 @@ namespace restlessmedia.Module.Property.Vebra
       containerBuilder.RegisterType<ApiPropertyProvider>().As<IApiPropertyProvider>().SingleInstance();
       containerBuilder.RegisterType<ApiPropertyService>().As<IApiPropertyService>().SingleInstance();
       containerBuilder.RegisterType<ApiPropertyDataProvider>().As<IApiPropertyDataProvider>().SingleInstance();
+      containerBuilder.RegisterType<ApiPropertySettings>().As<IApiPropertySettings>().SingleInstance(); 
     }
   }
 }
