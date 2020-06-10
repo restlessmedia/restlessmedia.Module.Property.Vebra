@@ -5,7 +5,7 @@
     <Product>restlessmedia.Module.Property.Vebra</Product>
     <Copyright>Copyright ©  2020</Copyright>
     <OutputPath>bin\$(Configuration)\</OutputPath>
-    <Version>2.0.1</Version>
+    <Version>2.0.2</Version>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -17,20 +17,20 @@
     <PackageReference Include="Autofac" Version="5.2.0" />
     <PackageReference Include="Autofac.Configuration" Version="5.1.0" />
     <PackageReference Include="Dapper" Version="2.0.35" />
-    <PackageReference Include="DateTimeExtensions" Version="2.0.0" />
+    <PackageReference Include="DateTimeExtensions" Version="2.0.0.1000" />
     <PackageReference Include="EnterpriseLibrary.Common" Version="6.0.1304.0" />
     <PackageReference Include="EnterpriseLibrary.TransientFaultHandling" Version="6.0.1304.0" />
     <PackageReference Include="EntityFramework" Version="6.4.4" />
     <PackageReference Include="FastMapper" Version="2.1.0" />
     <PackageReference Include="FastMember" Version="1.5.0" />
-    <PackageReference Include="Microsoft.AspNet.Razor" Version="3.0.0" />
-    <PackageReference Include="Microsoft.Azure.KeyVault.Core" Version="1.0.0" />
+    <PackageReference Include="Microsoft.AspNet.Razor" Version="3.2.7" />
+    <PackageReference Include="Microsoft.Azure.KeyVault.Core" Version="3.0.5" />
     <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="1.1.1" />
     <PackageReference Include="Microsoft.Data.Edm" Version="5.8.4" />
     <PackageReference Include="Microsoft.Data.OData" Version="5.8.4" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0-preview.4.20251.6" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0-preview.4.20251.6" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="5.0.0-preview.4.20251.6" />
     <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="5.0.0-preview.4.20251.6" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0-preview.4.20251.6" />
     <PackageReference Include="Microsoft.Extensions.FileProviders.Abstractions" Version="5.0.0-preview.4.20251.6" />
@@ -43,14 +43,14 @@
     <PackageReference Include="NETStandard.Library" Version="2.0.3" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="RazorEngine" Version="3.10.0" />
-    <PackageReference Include="restlessmedia.Module" Version="5.0.2" />
+    <PackageReference Include="restlessmedia.Module" Version="5.0.5" />
     <PackageReference Include="restlessmedia.Module.Address" Version="1.0.0" />
     <PackageReference Include="restlessmedia.Module.Contact" Version="0.3.1" />
     <PackageReference Include="restlessmedia.Module.Data.EF" Version="1.1.0" />
     <PackageReference Include="restlessmedia.Module.Email" Version="1.5.0" />
-    <PackageReference Include="restlessmedia.Module.File" Version="2.3.1" />
+    <PackageReference Include="restlessmedia.Module.File" Version="2.4.0" />
     <PackageReference Include="restlessmedia.Module.Meta" Version="1.0.1" />
-    <PackageReference Include="restlessmedia.Module.Property" Version="2.1.1" />
+    <PackageReference Include="restlessmedia.Module.Property" Version="2.1.4" />
     <PackageReference Include="restlessmedia.Module.Security" Version="1.16.0" />
     <PackageReference Include="SqlBuilder" Version="1.16.3" />
     <PackageReference Include="SqlBuilder.DataServices" Version="2.0.0" />
