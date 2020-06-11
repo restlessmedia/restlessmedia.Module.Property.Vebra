@@ -233,8 +233,9 @@ namespace restlessmedia.Module.Property.Vebra
     [XmlElement("rent")]
     public decimal Rent { get; set; }
 
-    [XmlElement("toLetPOA", Type = typeof(byte))]
-    public byte ToLetPOA { get; set; }
+    // not guarenteed to have a value
+    // [XmlElement("toLetPOA", Type = typeof(byte))]
+    // public byte ToLetPOA { get; set; }
 
     public byte? StudentProperty
     {
