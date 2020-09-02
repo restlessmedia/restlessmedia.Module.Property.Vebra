@@ -5,7 +5,7 @@
     <Product>restlessmedia.Module.Property.Vebra</Product>
     <Copyright>Copyright ©  2020</Copyright>
     <OutputPath>bin\$(Configuration)\</OutputPath>
-    <Version>2.0.3</Version>
+    <Version>3.0.0</Version>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -28,31 +28,31 @@
     <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="1.1.1" />
     <PackageReference Include="Microsoft.Data.Edm" Version="5.8.4" />
     <PackageReference Include="Microsoft.Data.OData" Version="5.8.4" />
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0-preview.4.20251.6" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0-preview.4.20251.6" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="5.0.0-preview.4.20251.6" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="5.0.0-preview.4.20251.6" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0-preview.4.20251.6" />
-    <PackageReference Include="Microsoft.Extensions.FileProviders.Abstractions" Version="5.0.0-preview.4.20251.6" />
-    <PackageReference Include="Microsoft.Extensions.FileProviders.Physical" Version="5.0.0-preview.4.20251.6" />
-    <PackageReference Include="Microsoft.Extensions.FileSystemGlobbing" Version="5.0.0-preview.4.20251.6" />
-    <PackageReference Include="Microsoft.Extensions.Primitives" Version="5.0.0-preview.4.20251.6" />
-    <PackageReference Include="Microsoft.NETCore.Platforms" Version="5.0.0-preview.4.20251.6" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Physical" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.FileSystemGlobbing" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Primitives" Version="2.2.0" />
+    <PackageReference Include="Microsoft.NETCore.Platforms" Version="2.2.0" />
     <PackageReference Include="Microsoft.Win32.Primitives" Version="4.3.0" />
-    <PackageReference Include="Microsoft.WindowsAzure.ConfigurationManager" Version="3.2.3" />
+    <PackageReference Include="Microsoft.WindowsAzure.ConfigurationManager" Version="2.0.3" />
     <PackageReference Include="NETStandard.Library" Version="2.0.3" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="RazorEngine" Version="3.10.0" />
-    <PackageReference Include="restlessmedia.Module" Version="5.0.5" />
-    <PackageReference Include="restlessmedia.Module.Address" Version="1.0.0" />
-    <PackageReference Include="restlessmedia.Module.Contact" Version="0.3.1" />
-    <PackageReference Include="restlessmedia.Module.Data.EF" Version="1.1.0" />
-    <PackageReference Include="restlessmedia.Module.Email" Version="1.5.0" />
-    <PackageReference Include="restlessmedia.Module.File" Version="2.4.0" />
+    <PackageReference Include="restlessmedia.Module" Version="7.0.3" />
+    <PackageReference Include="restlessmedia.Module.Address" Version="3.0.1" />
+    <PackageReference Include="restlessmedia.Module.Contact" Version="2.0.0" />
+    <PackageReference Include="restlessmedia.Module.Data.EF" Version="2.0.0" />
+    <PackageReference Include="restlessmedia.Module.Email" Version="2.1.1" />
+    <PackageReference Include="restlessmedia.Module.File" Version="2.4.1" />
     <PackageReference Include="restlessmedia.Module.Meta" Version="1.0.1" />
-    <PackageReference Include="restlessmedia.Module.Property" Version="2.1.4" />
-    <PackageReference Include="restlessmedia.Module.Security" Version="1.16.0" />
-    <PackageReference Include="SqlBuilder" Version="1.16.3" />
+    <PackageReference Include="restlessmedia.Module.Property" Version="3.1.0" />
+    <PackageReference Include="restlessmedia.Module.Security" Version="3.1.0" />
+    <PackageReference Include="SqlBuilder" Version="2.0.1" />
     <PackageReference Include="SqlBuilder.DataServices" Version="2.0.0" />
     <PackageReference Include="StackExchange.Redis.StrongName" Version="1.2.6" />
     <PackageReference Include="System.AppContext" Version="4.3.0" />
@@ -107,7 +107,16 @@
     <PackageReference Include="System.ValueTuple" Version="4.5.0" />
     <PackageReference Include="System.Xml.ReaderWriter" Version="4.3.1" />
     <PackageReference Include="System.Xml.XDocument" Version="4.3.0" />
-    <PackageReference Include="WindowsAzure.Storage" Version="9.3.3" />
+    <PackageReference Include="WindowsAzure.Storage" Version="2.1.0.4" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="restlessmedia.Module.Property.Vebra.module" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="restlessmedia.Module.Property.Vebra.module">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.ComponentModel.Composition" />
@@ -119,3 +128,9 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
 </Project>
+
+
+
+
+
+
