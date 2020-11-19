@@ -3,6 +3,7 @@ using restlessmedia.Module.Configuration;
 using restlessmedia.Module.Email;
 using restlessmedia.Module.File;
 using restlessmedia.Module.Property.Vebra.Data;
+using System;
 using System.IO;
 using Xunit;
 
@@ -27,8 +28,6 @@ namespace restlessmedia.Module.Property.Vebra.Tests
     /// <param name="xml"></param>
     [Theory]
     [InlineData("<?xml version=\"1.0\" encoding=\"iso-8859-1\" ?><properties />")]
-    // this will force an error as there is no xml data
-    [InlineData(null)]
     public void sync_always_saves(string xml)
     {
       // set-up
@@ -36,6 +35,24 @@ namespace restlessmedia.Module.Property.Vebra.Tests
 
       // call
       _apiPropertyService.Sync();
+
+      // assert
+      A.CallTo(() => _apiPropertyDataProvider.SaveSync(A<ISync>.Ignored))
+        .WhenArgumentsMatch(x => !x.Get<ISync>(0).IsRunning)
+        .MustHaveHappenedOnceExactly();
+    }
+
+    [Fact]
+    public void sync_always_saves_when_exceptional()
+    {
+      string xml = null;
+
+      // set-up
+      SetResponseXml(xml);
+
+      // call
+      try { _apiPropertyService.Sync(null); }
+      finally { }
 
       // assert
       A.CallTo(() => _apiPropertyDataProvider.SaveSync(A<ISync>.Ignored))
