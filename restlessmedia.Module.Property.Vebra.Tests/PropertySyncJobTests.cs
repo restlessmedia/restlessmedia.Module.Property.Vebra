@@ -28,19 +28,6 @@ namespace restlessmedia.Module.Property.Vebra.Tests
       DownloadHelper.WebClientFactory = () => A.Fake<IWebClient>();
     }
 
-    [Fact]
-    public void Sync_does_stuff()
-    {
-      _job.Sync();
-    }
-
-    [Fact]
-    public void Sync_does_date()
-    {
-      const string format = "yyyy-MM-dd-HH_mmss.xml";
-      string fileName = DateTime.Now.ToString(format);
-    }
-
     [Theory]
     [ResourceInlineData("restlessmedia.Module.Property.Vebra.Tests.example_feed.xml")]
     public void xml_serialisation_ampersand(Stream stream)
