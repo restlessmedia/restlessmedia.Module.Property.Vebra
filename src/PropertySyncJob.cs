@@ -11,9 +11,9 @@ namespace restlessmedia.Module.Property.Vebra
   {
     public PropertySyncJob(IApiPropertyDataProvider apiPropertyDataProvider, IDiskStorageProvider storageProvider, IApiPropertyProvider apiPropertyProvider, ILog log)
     {
-      _apiPropertyDataProvider = apiPropertyDataProvider;
-      _storageProvider = storageProvider;
-      _apiPropertyProvider = apiPropertyProvider;
+      _apiPropertyDataProvider = apiPropertyDataProvider ?? throw new ArgumentNullException(nameof(apiPropertyDataProvider));
+      _storageProvider = storageProvider ?? throw new ArgumentNullException(nameof(storageProvider));
+      _apiPropertyProvider = apiPropertyProvider ?? throw new ArgumentNullException(nameof(apiPropertyProvider));
       _review = new PropertySyncReview();
       _log = log ?? throw new ArgumentNullException(nameof(log));
     }
@@ -23,7 +23,7 @@ namespace restlessmedia.Module.Property.Vebra
       _log.Info("Property sync start");
       string xml = GetXml();
       SaveCopy(xml);
-      ApiProperties properties = SyncProperties(xml);
+      ApiProperties properties = SyncPropertyXml(xml);
       _review.Properties = properties;
       _apiPropertyDataProvider.SetActive(properties.PropertyIds);
       _log.Info("Property sync complete");
@@ -38,10 +38,28 @@ namespace restlessmedia.Module.Property.Vebra
       }
     }
 
-    private ApiProperties SyncProperties(string xml)
+    private ApiProperties SyncPropertyXml(string xml)
     {
-      ApiProperties properties = Deserialize(xml);
-      SyncProperties(properties);
+      ApiProperties properties = DeserializeXml(xml);
+
+      if (properties == null)
+      {
+        // sync each property
+        foreach (ApiProperty property in properties.Property)
+        {
+          try
+          {
+            _review.Messages.Add($"Syncing property {property.DisplayAddress} ({property.Images.Count()} images)");
+            SyncProperty(property);
+          }
+          catch (Exception e)
+          {
+            _review.Exceptions.Add(e);
+            _log.Exception(e, $"{nameof(SyncPropertyXml)} ({property.DisplayAddress})");
+          }
+        }
+      }
+
       return properties;
     }
 
@@ -51,23 +69,6 @@ namespace restlessmedia.Module.Property.Vebra
       const string extension = ".xml";
       string fileName = string.Concat(DateTime.Now.ToString(format), extension);
       _storageProvider.Put("propertysource", fileName, xml);
-    }
-
-    private void SyncProperties(ApiProperties properties)
-    {
-      foreach (ApiProperty property in properties.Property)
-      {
-        try
-        {
-          SyncProperty(property);
-          _review.Messages.Add($"Property: {property.DisplayAddress} ({property.Images.Count()} images)");
-        }
-        catch (Exception e)
-        {
-          _review.Exceptions.Add(e);
-          _log.Error($"Error syncing property {property.DisplayAddress}. {e}");
-        }
-      }
     }
 
     private void SyncProperty(ApiProperty property)
@@ -150,7 +151,7 @@ namespace restlessmedia.Module.Property.Vebra
       }
     }
 
-    private static ApiProperties Deserialize(string xml)
+    private static ApiProperties DeserializeXml(string xml)
     {
       if (string.IsNullOrWhiteSpace(xml))
       {

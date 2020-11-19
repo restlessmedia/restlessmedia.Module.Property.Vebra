@@ -3,7 +3,7 @@ using System.Configuration;
 
 namespace restlessmedia.Module.Property.Vebra.Configuration
 {
-  public class ApiPropertySettings : SerializableConfigurationSection, IApiPropertySettings
+  internal class ApiPropertySettings : SerializableConfigurationSection, IApiPropertySettings
   {
     [ConfigurationProperty(_urlProperty, IsRequired = true)]
     public string Url

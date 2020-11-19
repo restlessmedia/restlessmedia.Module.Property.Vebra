@@ -3,7 +3,6 @@ using restlessmedia.Module.File;
 using restlessmedia.Module.Property.Vebra.Data;
 using System;
 using System.IO;
-using System.Reflection;
 using System.Xml.Serialization;
 using Xunit;
 
@@ -18,7 +17,6 @@ namespace restlessmedia.Module.Property.Vebra.Tests
       _apiPropertyProvider = A.Fake<IApiPropertyProvider>();
       _job = new PropertySyncJob(_apiPropertyDataProvider, _diskProvider, _apiPropertyProvider, A.Fake<ILog>());
 
-      A.CallTo(() => _apiPropertyProvider.GetStream()).Returns(GetStream());
       A.CallTo(() => _apiPropertyDataProvider.Read(A<long>.Ignored))
         .ReturnsLazily(() =>
         {
@@ -43,16 +41,12 @@ namespace restlessmedia.Module.Property.Vebra.Tests
       string fileName = DateTime.Now.ToString(format);
     }
 
-    [Fact]
-    public void xml_serialisation_ampersand()
+    [Theory]
+    [ResourceInlineData("restlessmedia.Module.Property.Vebra.Tests.example_feed.xml")]
+    public void xml_serialisation_ampersand(Stream stream)
     {
-      ApiProperties properties = new XmlSerializer(typeof(ApiProperties)).Deserialize(GetStream()) as ApiProperties;
-    }
-
-    private static Stream GetStream()
-    {
-      const string resourceName = "restlessmedia.Module.Property.Vebra.Tests.example_feed.xml";
-      return Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName);
+      A.CallTo(() => _apiPropertyProvider.GetStream()).Returns(stream);
+      ApiProperties properties = new XmlSerializer(typeof(ApiProperties)).Deserialize(stream) as ApiProperties;
     }
 
     private readonly PropertySyncJob _job;

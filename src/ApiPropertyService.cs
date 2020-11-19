@@ -11,12 +11,11 @@ namespace restlessmedia.Module.Property.Vebra
 {
   internal sealed class ApiPropertyService : IApiPropertyService
   {
-    public ApiPropertyService(IEmailService emailService, IApiPropertyProvider apiPropertyProvider, IApiPropertyDataProvider apiPropertyDataProvider, IFileService fileService, IDiskStorageProvider storageProvider, ILicenseSettings licenseSettings, IEmailContext emailContext, ILog log)
+    public ApiPropertyService(IEmailService emailService, IApiPropertyProvider apiPropertyProvider, IApiPropertyDataProvider apiPropertyDataProvider, IDiskStorageProvider storageProvider, ILicenseSettings licenseSettings, IEmailContext emailContext, ILog log)
     {
       _emailService = emailService ?? throw new ArgumentNullException(nameof(emailService));
       _apiPropertyProvider = apiPropertyProvider ?? throw new ArgumentNullException(nameof(apiPropertyProvider));
       _apiPropertyDataProvider = apiPropertyDataProvider ?? throw new ArgumentNullException(nameof(apiPropertyDataProvider));
-      _fileService = fileService ?? throw new ArgumentNullException(nameof(fileService));
       _storageProvider = storageProvider ?? throw new ArgumentNullException(nameof(storageProvider));
       _licenseSettings = licenseSettings ?? throw new ArgumentNullException(nameof(licenseSettings));
       _emailContext = emailContext ?? throw new ArgumentNullException(nameof(emailContext));
@@ -64,9 +63,14 @@ namespace restlessmedia.Module.Property.Vebra
       PropertySyncJob job = new PropertySyncJob(_apiPropertyDataProvider, _storageProvider, _apiPropertyProvider, _log);
       ISyncReview review = null;
 
+      if (sync.IsRunning)
+      {
+        throw new Exception("Sync is already running");
+      }
+
       try
       {
-        review = Sync(sync, job);
+        review = job.Sync();
       }
       catch (Exception e)
       {
@@ -75,45 +79,18 @@ namespace restlessmedia.Module.Property.Vebra
       }
       finally
       {
-        try
-        {
-          EndSync(sync, review, job, user);
-        }
-        catch (Exception e)
-        {
-          _log.Exception(e);
-          throw;
-        }
+        TryEndSync(sync, review, user);
       }
 
       return review;
     }
 
-    public void SyncAsync()
+    public Task SyncAsync()
     {
-      Task.Run(() => Sync(null));
+      return Task.Run(() => Sync());
     }
 
-    /// <summary>
-    /// Performs a sync for the given sync type
-    /// </summary>
-    /// <param name="sync"></param>
-    private ISyncReview Sync(ISync sync, PropertySyncJob job)
-    {
-      if (sync.IsRunning)
-      {
-        throw new Exception("Sync is already running");
-      }
-
-      return job.Sync();
-    }
-
-    private void Notify(ISyncReview review, IUserInfo user = null)
-    {
-      _emailService.Send(new SyncEmail(_emailContext, review, user));
-    }
-
-    private void EndSync(ISync sync, ISyncReview review, PropertySyncJob job, IUserInfo user = null)
+    private void TryEndSync(ISync sync, ISyncReview review, IUserInfo user = null)
     {
       sync.IsRunning = false;
       sync.LastAccessed = DateTime.Now;
@@ -122,7 +99,7 @@ namespace restlessmedia.Module.Property.Vebra
       {
         if (review != null)
         {
-          Notify(review, user);
+          _emailService.Send(new SyncEmail(_emailContext, review, user));
         }
       }
       catch (Exception e)
@@ -140,8 +117,6 @@ namespace restlessmedia.Module.Property.Vebra
     private readonly IEmailService _emailService;
 
     private readonly IApiPropertyDataProvider _apiPropertyDataProvider;
-
-    private readonly IFileService _fileService;
 
     private readonly IDiskStorageProvider _storageProvider;
 

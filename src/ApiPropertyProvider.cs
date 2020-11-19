@@ -9,8 +9,8 @@ namespace restlessmedia.Module.Property.Vebra
   {
     public ApiPropertyProvider(IApiPropertySettings settings, ILog log)
     {
-      _apiPropertySettings = settings;
-      _log = log;
+      _apiPropertySettings = settings ?? throw new ArgumentNullException(nameof(settings));
+      _log = log ?? throw new ArgumentNullException(nameof(log));
     }
 
     public Stream GetStream()

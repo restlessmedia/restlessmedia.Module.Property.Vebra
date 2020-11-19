@@ -11,8 +11,7 @@ namespace restlessmedia.Module.Property.Vebra
     {
       get
       {
-        DateTime value;
-        return DateTime.TryParse(ModifiedValue, out value) ? value : (DateTime?)null;
+        return DateTime.TryParse(ModifiedValue, out DateTime value) ? value : (DateTime?)null;
       }
     }
 
@@ -26,8 +25,7 @@ namespace restlessmedia.Module.Property.Vebra
     {
       get
       {
-        Uri value;
-        return Uri.TryCreate(Url, UriKind.RelativeOrAbsolute, out value) ? value : null;
+        return Uri.TryCreate(Url, UriKind.RelativeOrAbsolute, out Uri value) ? value : null;
       }
     }
 

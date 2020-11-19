@@ -1,4 +1,5 @@
 ﻿using restlessmedia.Module.Security;
+using System.Threading.Tasks;
 
 namespace restlessmedia.Module.Property.Vebra
 {
@@ -43,6 +44,6 @@ namespace restlessmedia.Module.Property.Vebra
     /// <param name="user"></param>
     ISyncReview Sync(IUserInfo user = null);
 
-    void SyncAsync();
+    Task SyncAsync();
   }
 }
