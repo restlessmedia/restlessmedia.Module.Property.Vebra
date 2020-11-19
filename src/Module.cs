@@ -11,7 +11,7 @@ namespace restlessmedia.Module.Property.Vebra
       containerBuilder.RegisterType<ApiPropertyProvider>().As<IApiPropertyProvider>().SingleInstance();
       containerBuilder.RegisterType<ApiPropertyService>().As<IApiPropertyService>().SingleInstance();
       containerBuilder.RegisterType<ApiPropertyDataProvider>().As<IApiPropertyDataProvider>().SingleInstance();
-      containerBuilder.RegisterSettings<ApiPropertySettings>("restlessmedia/apiProperty");
+      containerBuilder.RegisterSettings<IApiPropertySettings>("restlessmedia/apiProperty");
     }
   }
 }
