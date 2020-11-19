@@ -50,9 +50,8 @@ namespace restlessmedia.Module.Property.Vebra.Tests
       // set-up
       SetResponseXml(xml);
 
-      // call
-      try { _apiPropertyService.Sync(null); }
-      finally { }
+      // call - this will throw due to invalid xml
+      Assert.ThrowsAny<Exception>(() => _apiPropertyService.Sync(null));
 
       // assert
       A.CallTo(() => _apiPropertyDataProvider.SaveSync(A<ISync>.Ignored))
