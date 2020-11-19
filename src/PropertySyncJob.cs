@@ -42,7 +42,7 @@ namespace restlessmedia.Module.Property.Vebra
     {
       ApiProperties properties = DeserializeXml(xml);
 
-      if (properties == null)
+      if (properties != null)
       {
         // sync each property
         foreach (ApiProperty property in properties.Property)
