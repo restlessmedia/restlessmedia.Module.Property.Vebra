@@ -74,12 +74,6 @@ namespace restlessmedia.Module.Property.Vebra
     private void SyncProperty(ApiProperty property)
     {
       IProperty propertyEntity = _apiPropertyDataProvider.Read(property.PropertyId);
-
-      if (propertyEntity?.PropertyId == null)
-      {
-        throw new InvalidOperationException("The property returned is null or does not have a property id");
-      }
-
       ApiPropertyEntity apiPropertyEntity = new ApiPropertyEntity(property, propertyEntity);
       _apiPropertyDataProvider.Save(property, apiPropertyEntity);
       SyncResources(property, propertyEntity, apiPropertyEntity);
