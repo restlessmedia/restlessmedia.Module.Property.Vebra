@@ -14,11 +14,10 @@ namespace restlessmedia.Module.Property.Vebra.Data
 {
   internal class ApiPropertySqlDataProvider : SqlDataProviderBase
   {
-    public ApiPropertySqlDataProvider(IDataContext context, IPropertyDataProvider propertyDataProvider, IFileDataProvider fileDataProvider, ILog log)
+    public ApiPropertySqlDataProvider(IDataContext context, IPropertyDataProvider propertyDataProvider, ILog log)
       : base(context)
     {
       _propertyDataProvider = propertyDataProvider ?? throw new ArgumentNullException(nameof(propertyDataProvider));
-      _fileDataProvider = fileDataProvider ?? throw new ArgumentNullException(nameof(fileDataProvider));
       _log = log ?? throw new ArgumentNullException(nameof(log));
     }
 
@@ -124,25 +123,28 @@ namespace restlessmedia.Module.Property.Vebra.Data
     {
       using (DatabaseContext context = CreateDatabaseContext())
       {
-        FileRepository fileRepository = context.Repository<FileRepository>();
-        EntityRepository entityRepository = context.Repository<EntityRepository>();
-
-        File.Data.VEntityFile entityFile = fileRepository.Save(entityType, entityId, file, x =>
+        using (File.Data.DatabaseContext fileDatabaseContext = new File.Data.DatabaseContext(DataContext, false))
         {
-          file.FileId = x.FileId;
+          FileRepository fileRepository = new FileRepository(fileDatabaseContext);
+          EntityRepository entityRepository = new EntityRepository(context);
 
-          if (x.File.SystemFileName != file.SystemFileName)
+          File.Data.VEntityFile entityFile = fileRepository.Save(entityType, entityId, file, x =>
           {
-            _log.Info($"Updating api property file name from {file.SystemFileName} to {x.File.SystemFileName} for id {x.File.FileId}.");
-            x.File.SystemFileName = file.SystemFileName;
-          }
-        });
+            file.FileId = x.FileId;
 
-        context.SaveChanges();
+            if (x.File.SystemFileName != file.SystemFileName)
+            {
+              _log.Info($"Updating api property file name from {file.SystemFileName} to {x.File.SystemFileName} for id {x.File.FileId}.");
+              x.File.SystemFileName = file.SystemFileName;
+            }
+          });
 
-        // update the entity date value for this file
-        entityRepository.Update(entityFile.File, file.LastUpdated);
-        context.SaveChanges();
+          context.SaveChanges();
+
+          // update the entity date value for this file
+          entityRepository.Update(entityFile.File, file.LastUpdated);
+          context.SaveChanges();
+        }
       }
     }
 
@@ -206,8 +208,6 @@ namespace restlessmedia.Module.Property.Vebra.Data
     }
 
     private readonly IPropertyDataProvider _propertyDataProvider;
-
-    private readonly IFileDataProvider _fileDataProvider;
 
     private readonly ILog _log;
   }

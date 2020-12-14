@@ -7,10 +7,7 @@ namespace restlessmedia.Module.Property.Vebra.Data
   internal class DatabaseContext : Property.Data.DatabaseContext
   {
     public DatabaseContext(IDataContext dataContext, bool autoDetectChanges = false)
-      : base(dataContext, autoDetectChanges)
-    {
-      _dataContext = dataContext;
-    }
+      : base(dataContext, autoDetectChanges) { }
 
     public DbSet<VApiProperty> ApiProperty
     {
@@ -34,7 +31,5 @@ namespace restlessmedia.Module.Property.Vebra.Data
 
       modelBuilder.Configurations.Add(new EntityTypeConfiguration<VApiProperty>());
     }
-
-    private readonly IDataContext _dataContext;
   }
 }
