@@ -25,7 +25,7 @@ namespace restlessmedia.Module.Property.Vebra.Tests.Data
       _apiPropertySqlDataProvider = new ApiPropertySqlDataProvider(dataContext, propertyDataProvider, log);
     }
 
-    [Fact]
+    [Fact(Skip = "Hindered by EF")]
     public void asd()
     {
       _apiPropertySqlDataProvider.SaveFile(EntityType.Property, 1, new FileEntity());
