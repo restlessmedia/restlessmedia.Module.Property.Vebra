@@ -121,12 +121,12 @@ namespace restlessmedia.Module.Property.Vebra.Data
 
     public void SaveFile(EntityType entityType, int entityId, FileEntity file)
     {
-      using (DatabaseContext context = CreateDatabaseContext())
+      using (DatabaseContext apiDatabaseContext = CreateDatabaseContext())
       {
         using (File.Data.DatabaseContext fileDatabaseContext = new File.Data.DatabaseContext(DataContext, false))
         {
           FileRepository fileRepository = new FileRepository(fileDatabaseContext);
-          EntityRepository entityRepository = new EntityRepository(context);
+          EntityRepository entityRepository = new EntityRepository(apiDatabaseContext);
 
           File.Data.VEntityFile entityFile = fileRepository.Save(entityType, entityId, file, x =>
           {
@@ -139,11 +139,11 @@ namespace restlessmedia.Module.Property.Vebra.Data
             }
           });
 
-          context.SaveChanges();
+          fileDatabaseContext.SaveChanges();
 
           // update the entity date value for this file
           entityRepository.Update(entityFile.File, file.LastUpdated);
-          context.SaveChanges();
+          apiDatabaseContext.SaveChanges();
         }
       }
     }
