@@ -13,19 +13,9 @@ namespace restlessmedia.Module.Property.Vebra.Data
       _context = context;
     }
 
-    public VApiProperty Find(long apiPropertyId)
-    {
-      return Included().SingleOrDefault(x => x.ApiPropertyId == apiPropertyId);
-    }
-
-    public VApiProperty Find(int propertyId)
-    {
-      return Included().SingleOrDefault(x => x.PropertyId == propertyId);
-    }
-
     public VProperty FindWithFiles(long apiPropertyId)
     {
-      VApiProperty apiProperty = Find(apiPropertyId);
+      VApiProperty apiProperty = Included().SingleOrDefault(x => x.ApiPropertyId == apiPropertyId);
 
       if (apiProperty == null)
       {

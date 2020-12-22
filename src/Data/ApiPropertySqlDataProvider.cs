@@ -116,7 +116,7 @@ namespace restlessmedia.Module.Property.Vebra.Data
 
       // there is a limit to the amount of propertyIds will be parameretized so we might need to add a check here
       const string commandText = "UPDATE TProperty SET Status = @status FROM TProperty P INNER JOIN TAPIProperty API ON API.PropertyEntityId = P.PropertyId WHERE API.PropertyId NOT IN @propertyIds";
-      Execute(commandText, new { status = PropertyStatus.Archived, propertyIds = propertyIds }, CommandType.Text);
+      Execute(commandText, new { status = PropertyStatus.Archived, propertyIds }, CommandType.Text);
     }
 
     public void SaveFile(EntityType entityType, int entityId, FileEntity file)

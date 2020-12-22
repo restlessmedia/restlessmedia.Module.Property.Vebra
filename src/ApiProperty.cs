@@ -210,8 +210,8 @@ namespace restlessmedia.Module.Property.Vebra
     public Floorplan[] Floorplans { get; set; }
 
     [XmlArray("epcGraphs")]
-    [XmlArrayItem("epcGraph", Type = typeof(Resource))]
-    public Resource[] EpcGraphs { get; set; }
+    [XmlArrayItem("epcGraph", Type = typeof(EPCGraph))]
+    public EPCGraph[] EpcGraphs { get; set; }
 
     [XmlArray("epcFrontPages")]
     [XmlArrayItem("epcFrontPage", Type = typeof(Resource))]
