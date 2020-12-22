@@ -14,11 +14,10 @@ namespace restlessmedia.Module.Property.Vebra.Data
 {
   internal class ApiPropertySqlDataProvider : SqlDataProviderBase
   {
-    public ApiPropertySqlDataProvider(IDataContext context, IPropertyDataProvider propertyDataProvider, IFileDataProvider fileDataProvider, ILog log)
+    public ApiPropertySqlDataProvider(IDataContext context, IPropertyDataProvider propertyDataProvider, ILog log)
       : base(context)
     {
       _propertyDataProvider = propertyDataProvider ?? throw new ArgumentNullException(nameof(propertyDataProvider));
-      _fileDataProvider = fileDataProvider ?? throw new ArgumentNullException(nameof(fileDataProvider));
       _log = log ?? throw new ArgumentNullException(nameof(log));
     }
 
@@ -117,7 +116,7 @@ namespace restlessmedia.Module.Property.Vebra.Data
 
       // there is a limit to the amount of propertyIds will be parameretized so we might need to add a check here
       const string commandText = "UPDATE TProperty SET Status = @status FROM TProperty P INNER JOIN TAPIProperty API ON API.PropertyEntityId = P.PropertyId WHERE API.PropertyId NOT IN @propertyIds";
-      Execute(commandText, new { status = PropertyStatus.Archived, propertyIds = propertyIds }, CommandType.Text);
+      Execute(commandText, new { status = PropertyStatus.Archived, propertyIds }, CommandType.Text);
     }
 
     public void SaveFile(EntityType entityType, int entityId, FileEntity file)
@@ -206,8 +205,6 @@ namespace restlessmedia.Module.Property.Vebra.Data
     }
 
     private readonly IPropertyDataProvider _propertyDataProvider;
-
-    private readonly IFileDataProvider _fileDataProvider;
 
     private readonly ILog _log;
   }

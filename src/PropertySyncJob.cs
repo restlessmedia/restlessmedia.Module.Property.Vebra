@@ -1,6 +1,8 @@
 ﻿using restlessmedia.Module.File;
 using restlessmedia.Module.Property.Vebra.Data;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Serialization;
@@ -87,9 +89,13 @@ namespace restlessmedia.Module.Property.Vebra
 
     private void SyncResources(ApiProperty property, IProperty propertyEntity, ApiPropertyEntity apiPropertyEntity)
     {
-      ResourceCollection resources = new ResourceCollection(property.Images.Union(property.Floorplans).Where(x => ShouldUpdate(x, propertyEntity)));
-      DownloadResources(resources);
-      SaveResources(resources, apiPropertyEntity);
+      IEnumerable<Resource> resources = property.Images
+        .Union(property.Floorplans)
+        .Union(property.EpcGraphs)
+        .Where(x => ShouldUpdate(x, propertyEntity));
+      ResourceCollection resourceCollection = new ResourceCollection(resources);
+      DownloadResources(resourceCollection);
+      SaveResources(resourceCollection, apiPropertyEntity);
     }
 
     private bool ShouldUpdate(Resource resource, IProperty propertyEntity)

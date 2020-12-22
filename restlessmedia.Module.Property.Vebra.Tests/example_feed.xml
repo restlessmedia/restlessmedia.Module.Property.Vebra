@@ -61,24 +61,13 @@
       <image modified="2016-09-09 12:28:35">
         http://media2.jupix.co.uk/v3/clients/1617/properties/9351/IMG_9351_2_large.jpg
       </image>
-      <image modified="2016-09-09 12:28:35">
-        http://media2.jupix.co.uk/v3/clients/1617/properties/9351/IMG_9351_3_large.jpg
-      </image>
-      <image modified="2016-09-09 12:28:35">
-        http://media2.jupix.co.uk/v3/clients/1617/properties/9351/IMG_9351_6_large.jpg
-      </image>
-      <image modified="2016-09-09 12:28:35">
-        http://media2.jupix.co.uk/v3/clients/1617/properties/9351/IMG_9351_7_large.jpg
-      </image>
-      <image modified="2016-09-09 12:28:35">
-        http://media2.jupix.co.uk/v3/clients/1617/properties/9351/IMG_9351_4_large.jpg
-      </image>
-      <image modified="2016-09-09 12:28:35">
-        http://media2.jupix.co.uk/v3/clients/1617/properties/9351/IMG_9351_5_large.jpg
-      </image>
     </images>
-    <floorplans></floorplans>
-    <epcGraphs></epcGraphs>
+    <floorplans>
+      <floorplan modified="2018-05-24 16:33:18">http://media2.jupix.co.uk/v3/clients/1617/properties/413/FLP_413_1_large.png</floorplan>
+    </floorplans>
+    <epcGraphs>
+      <epcGraph modified="2020-11-03 12:02:05">http://media2.jupix.co.uk/v3/clients/1617/properties/413/MED_413_2246.jpg</epcGraph>
+    </epcGraphs>
     <epcFrontPages>
       <epcFrontPage modified="2016-09-09 12:16:01">http://epc.jupix.co.uk/373ort9i</epcFrontPage>
     </epcFrontPages>
